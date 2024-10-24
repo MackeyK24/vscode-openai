@@ -10,7 +10,6 @@ import { vscode } from '@common/vscode'
 
 const useStyles = makeStyles({
   editableCell: {
-    cursor: 'pointer',
     '&:hover': {
       backgroundColor: 'var(--colorNeutralBackground1Hover)',
     },
@@ -32,10 +31,6 @@ export const EditableTableCell: FC<EditableTableCellProps> = ({
   const styles = useStyles()
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [editValue, setEditValue] = useState<string>(conversation.summary)
-
-  const handleDoubleClick = (): void => {
-    setIsEditing(true)
-  }
 
   const handleSave = (): void => {
     if (editValue.trim() === '') return
@@ -87,7 +82,6 @@ export const EditableTableCell: FC<EditableTableCellProps> = ({
       <TableCellLayout
         description={conversation.summary}
         onClick={() => onOpenConversation(conversation)}
-        onDoubleClick={handleDoubleClick}
       />
     </TableCell>
   )
