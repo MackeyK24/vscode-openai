@@ -623,9 +623,14 @@
           "group": "conversation03@2"
         },
         {
-          "command": "_vscode-openai.conversation.delete",
+          "command": "_vscode-openai.conversation.edit",
           "when": "webviewId == 'vscode-openai.conversations.view.sidebar' && webviewSection == 'conversation'",
           "group": "conversation04@1"
+        },
+        {
+          "command": "_vscode-openai.conversation.delete",
+          "when": "webviewId == 'vscode-openai.conversations.view.sidebar' && webviewSection == 'conversation'",
+          "group": "conversation04@2"
         }
       ],
       "view/item/context": [
@@ -812,6 +817,11 @@
         "command": "_vscode-openai.conversation.show.json",
         "title": "Show Json",
         "category": "vscode-openai.conversation.show"
+      },
+      {
+        "command": "_vscode-openai.conversation.edit",
+        "title": "Edit Name",
+        "category": "vscode-openai.conversation.edit"
       },
       {
         "command": "_vscode-openai.conversation.delete",
