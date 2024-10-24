@@ -106,6 +106,7 @@ export class ConversationsWebviewProvider implements WebviewViewProvider {
    *    | webview		| extension	| onDidInitialize											|									|
    *    | extension	| webview		| onWillConversationsLoad							| IConversation[]	|
    *    | webview		| extension	| onDidOpenConversationWebview				| IConversation		|
+   *    | webview		| extension	| onDidUpdateConversationName				| {conversationId, newName} |
    *
    */
 
@@ -120,6 +121,17 @@ export class ConversationsWebviewProvider implements WebviewViewProvider {
         case 'onDidOpenConversationWebview': {
           const conversation: IConversation = JSON.parse(message.text)
           onDidOpenConversationWebview(conversation)
+          return
+        }
+
+        case 'onDidUpdateConversationName': {
+          const { conversationId, newName } = JSON.parse(message.text)
+          const conversations = ConversationStorageService.instance.getAll()
+          const conversation = conversations.find(c => c.conversationId === conversationId)
+          if (conversation) {
+            conversation.summary = newName
+            ConversationStorageService.instance.update(conversation)
+          }
           return
         }
 
