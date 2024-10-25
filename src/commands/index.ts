@@ -1,5 +1,6 @@
 import { ExtensionContext, Disposable } from 'vscode'
 import { CommandManager } from './commandManager'
+import ConversationStorageService from '@app/services/storageServices/conversationStorageService'
 import {
   NewConversationStandardCommand,
   NewConversationPersonaCommand,
@@ -8,6 +9,7 @@ import {
   ShowConversationMarkdownCommand,
   ClipboardCopyConversationSummaryCommand,
   DeleteConversationCommand,
+  EditConversationCommand,
 } from './conversation'
 import {
   RefreshConversationsCommand,
@@ -51,6 +53,7 @@ export function registerVscodeOpenAICommands(
   commandManager.register(new ShowConversationJsonCommand())
   commandManager.register(new ShowConversationMarkdownCommand())
   commandManager.register(new ClipboardCopyConversationSummaryCommand())
+  commandManager.register(new EditConversationCommand(ConversationStorageService.instance))
   commandManager.register(new DeleteConversationCommand())
 
   // Conversations

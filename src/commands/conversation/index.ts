@@ -7,3 +7,4 @@ export { default as ShowConversationMarkdownCommand } from './openMarkdown'
 
 export { default as ClipboardCopyConversationSummaryCommand } from './copyClipboardSummary'
 export { default as DeleteConversationCommand } from './delete'
+export { default as EditConversationCommand } from './edit'

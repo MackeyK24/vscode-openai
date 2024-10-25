@@ -623,21 +623,36 @@
           "group": "conversation03@2"
         },
         {
-          "command": "_vscode-openai.conversation.delete",
+          "command": "_vscode-openai.conversation.edit",
           "when": "webviewId == 'vscode-openai.conversations.view.sidebar' && webviewSection == 'conversation'",
           "group": "conversation04@1"
+        },
+        {
+          "command": "_vscode-openai.conversation.delete",
+          "when": "webviewId == 'vscode-openai.conversations.view.sidebar' && webviewSection == 'conversation'",
+          "group": "conversation04@2"
         }
       ],
       "view/item/context": [
         {
+          "command": "_vscode-openai.conversation.edit",
+          "when": "view == vscode-openai.conversations.view.sidebar",
+          "group": "inline@1"
+        },
+        {
+          "command": "_vscode-openai.conversation.delete",
+          "when": "view == vscode-openai.conversations.view.sidebar",
+          "group": "inline@2"
+        },
+        {
           "command": "vscode-openai.embeddings.new.conversation",
           "when": "view == vscode-openai.embeddings.view.sidebar",
-          "group": "inline@1"
+          "group": "inline@3"
         },
         {
           "command": "_vscode-openai.embeddings.delete.resource",
           "when": "view == vscode-openai.embeddings.view.sidebar",
-          "group": "inline@2"
+          "group": "inline@4"
         }
       ],
       "view/title": [
@@ -812,6 +827,11 @@
         "command": "_vscode-openai.conversation.show.json",
         "title": "Show Json",
         "category": "vscode-openai.conversation.show"
+      },
+      {
+        "command": "_vscode-openai.conversation.edit",
+        "title": "Edit Name",
+        "category": "_vscode-openai.conversation.edit"
       },
       {
         "command": "_vscode-openai.conversation.delete",

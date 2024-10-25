@@ -1,6 +1,6 @@
 import { Command } from '@app/commands'
 import { IConversation } from '@app/interfaces'
-import { ConversationStorageService } from '@app/services'
+import ConversationStorageService from '@app/services/storageServices/conversationStorageService'
 
 export default class OpenConversationWebviewCommand implements Command {
   public readonly id = '_vscode-openai.conversation.open.webview'

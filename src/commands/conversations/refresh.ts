@@ -1,5 +1,5 @@
 import { Command } from '@app/commands'
-import { ConversationStorageService } from '@app/services'
+import ConversationStorageService from '@app/services/storageServices/conversationStorageService'
 
 export default class RefreshConversationsCommand implements Command {
   public readonly id = '_vscode-openai.conversations.refresh'
