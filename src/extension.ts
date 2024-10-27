@@ -17,8 +17,6 @@ import { disableServiceFeature } from './services/featureFlagServices'
 
 export function activate(context: ExtensionContext) {
   try {
-    disableServiceFeature()
-
     // Enable logging and telemetry
     TelemetryService.init(context)
     createInfoNotification('activate vscode-openai')
