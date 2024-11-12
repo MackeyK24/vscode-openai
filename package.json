@@ -232,6 +232,12 @@
           ],
           "order": 109
         },
+        "vscode-openai.suppressOutputFocus": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "When enabled, prevents the OUTPUT panel from automatically gaining focus.",
+          "order": 111
+        },
         "vscode-openai.logLevel": {
           "type": "string",
           "default": "Info",

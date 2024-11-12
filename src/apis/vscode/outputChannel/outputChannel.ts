@@ -3,6 +3,18 @@ import { OutputChannel, window, workspace } from 'vscode'
 class OutputChannelFactory {
   private static outLogChannel: OutputChannel
 
+  private static shouldSuppressFocus(): boolean {
+    return workspace
+      .getConfiguration('vscode-openai')
+      .get('suppressOutputFocus', true)
+  }
+
+  public static showChannel(): void {
+    if (!this.shouldSuppressFocus()) {
+      this.getLogChannel().show()
+    }
+  }
+
   public static getLogChannel(): OutputChannel {
     if (!OutputChannelFactory.outLogChannel) {
       OutputChannelFactory.outLogChannel = window.createOutputChannel(
@@ -55,7 +67,7 @@ export function logWarning(warning: any): void {
       ''
     )
   OutputChannelFactory.getLogChannel().appendLine(logMessage)
-  OutputChannelFactory.getLogChannel().show()
+  OutputChannelFactory.showChannel()
 }
 
 export function logError(error: Error): void {
@@ -64,7 +76,7 @@ export function logError(error: Error): void {
     ''
   )
   OutputChannelFactory.getLogChannel().appendLine(logMessage)
-  OutputChannelFactory.getLogChannel().show()
+  OutputChannelFactory.showChannel()
 }
 
 function getTimeAndms(): string {
@@ -76,5 +88,5 @@ function getTimeAndms(): string {
 export function showInfo(message: string): void {
   OutputChannelFactory.getLogChannel().clear()
   OutputChannelFactory.getLogChannel().appendLine(message)
-  OutputChannelFactory.getLogChannel().show()
+  OutputChannelFactory.showChannel()
 }
